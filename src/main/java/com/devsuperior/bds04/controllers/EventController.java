@@ -19,7 +19,7 @@ import com.devsuperior.bds04.dto.EventDTO;
 import com.devsuperior.bds04.services.EventService;
 
 @RestController
-@RequestMapping(value = "/cities")
+@RequestMapping(value = "/events")
 public class EventController {
 
 	@Autowired
@@ -32,7 +32,7 @@ public class EventController {
 	}
 
 	@PostMapping
-	public ResponseEntity<EventDTO> insert( @RequestBody EventDTO dto) {
+	public ResponseEntity<EventDTO> insert(@Valid @RequestBody EventDTO dto) {
 		dto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
 		return ResponseEntity.created(uri).body(dto);

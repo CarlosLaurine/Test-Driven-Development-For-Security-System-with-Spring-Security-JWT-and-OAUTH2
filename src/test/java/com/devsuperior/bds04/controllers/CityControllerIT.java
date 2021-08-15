@@ -101,8 +101,8 @@ public class CityControllerIT {
 				.content(jsonBody).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON));
 
 		result.andExpect(status().isUnprocessableEntity());
-		result.andExpect(jsonPath("$.errors[0].fieldName").value("name"));
-		result.andExpect(jsonPath("$.errors[0].message").value("Campo requerido"));
+		result.andExpect(jsonPath("$.errors[0].field").value("name"));
+		result.andExpect(jsonPath("$.errors[0].message").value("Required Field"));
 	}
 
 	@Test
